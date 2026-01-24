@@ -17,7 +17,8 @@ file(GLOB SOURCES "src/*.cpp")
 # 创建可执行文件
 add_executable(main ${SOURCES})
 
-# 如果你在 Windows 上使用 MSVC，设置编码为 UTF-8 以避免乱码
+# 关键设置：强制 MSVC 使用 UTF-8 编码
+# 这不仅消除了 C4819 警告（针对无 BOM 文件），也保证了执行时中文字符集的正确性
 if(MSVC)
     add_compile_options("/utf-8")
 endif()

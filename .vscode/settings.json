@@ -1,0 +1,9 @@
+{
+    "cmake.debugConfig": {
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    "cmake.environment": {
+        "VSLANG": "1033"
+    },
+}
