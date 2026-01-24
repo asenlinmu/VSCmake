@@ -1,0 +1,10 @@
+build/
+bin/
+*.exe
+*.obj
+*.pdb
+*.ilk
+.vscode/
+! .vscode/settings.json
+! .vscode/tasks.json
+! .vscode/launch.json
