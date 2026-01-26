@@ -6,4 +6,5 @@
     "cmake.environment": {
         "VSLANG": "1033"
     },
+    "C_Cpp.errorSquiggles": "enabled",
 }

@@ -14,11 +14,10 @@ include_directories(src)
 # [优化 3]：自动发现 src 目录下的所有源文件
 file(GLOB SOURCES "src/*.cpp")
 
-# 创建可执行文件
-add_executable(main ${SOURCES})
-
-# 关键设置：强制 MSVC 使用 UTF-8 编码
-# 这不仅消除了 C4819 警告（针对无 BOM 文件），也保证了执行时中文字符集的正确性
+# 关键设置：强制 MSVC 使用 UTF-8 编码 (必须在 add_executable 之前设置)
 if(MSVC)
     add_compile_options("/utf-8")
 endif()
+
+# 创建可执行文件
+add_executable(main ${SOURCES})

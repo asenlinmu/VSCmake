@@ -1,5 +1,3 @@
-#define _ALLOW_COMPILER_AND_STL_VERSION_MISMATCH
-
 #include "math_utils.h" // 引入自定义头文件
 #include <iostream>
 #include <windows.h> // 引入 Windows API 头文件
@@ -19,5 +17,7 @@ int main() {
   } else {
     std::cout << "未能读取数字225。\n";
   }
+  
   return 0;
+
 }

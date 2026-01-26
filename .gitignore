@@ -1,20 +1,16 @@
-# 【必须忽略】 编译输出和中间文件
+# ----------------------------------------------------------------------
+# 编译输出目录 (Build Directories)
+# ----------------------------------------------------------------------
 build/
 bin/
 out/
 debug/
 release/
+.cache/
 
-# 【必须忽略】 VS Code 缓存和本地配置，但保留通用配置
-.vscode/*
-!.vscode/settings.json
-!.vscode/launch.json
-!.vscode/tasks.json
-!.vscode/extensions.json
-!.vscode/c_cpp_properties.json
- 
-
-# 【必须忽略】 C++ 编译产生的垃圾文件 (以防万一它们出现在根目录)
+# ----------------------------------------------------------------------
+# C++ 编译中间文件和二进制文件 (Compiled Object files & Binaries)
+# ----------------------------------------------------------------------
 *.exe
 *.obj
 *.pdb
@@ -23,6 +19,21 @@ release/
 *.dll
 *.exp
 *.tlog
+*.idb
+*.dbg
+*.pch
+*.map
+*.res
+*.o
+*.a
+*.so
+*.dylib
+
+# ----------------------------------------------------------------------
+# IDE & 编辑器配置 (IDE Specific)
+# ----------------------------------------------------------------------
+# Visual Studio
+.vs/
 *.suo
 *.user
 *.db
@@ -30,6 +41,17 @@ release/
 *.sdf
 *.opensdf
 
-# 【必须忽略】 系统自动生成的文件
+# VS Code (默认忽略所有，但保留通用项目配置)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/c_cpp_properties.json
+
+# ----------------------------------------------------------------------
+# 系统文件 (OS Generated)
+# ----------------------------------------------------------------------
 .DS_Store
 Thumbs.db
+ehthumbs.db
