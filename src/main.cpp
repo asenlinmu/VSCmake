@@ -15,7 +15,7 @@ int main() {
   if (std::cin >> x) {
     std::cout << "你输入的数字是: " << x << "，它的平方是: " << (x * x) << "\n";
   } else {
-    std::cout << "未能读取数字225。\n";
+    std::cout << "未能读取数字。\n" << x << std::endl;
   }
   
   return 0;
