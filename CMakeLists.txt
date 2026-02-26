@@ -12,6 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 include_directories(src)
 
 # [优化 3]：自动发现 src 目录下的所有源文件
+# 注意：新增文件后需要重新生成 CMake 缓存
 file(GLOB SOURCES "src/*.cpp")
 
 # 关键设置：强制 MSVC 使用 UTF-8 编码 (必须在 add_executable 之前设置)
