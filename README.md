@@ -27,9 +27,10 @@ VSCmake/
 *   安装 **CMake** (如果是 Visual Studio 通常已包含)。
 
 ### 2. VS Code 插件
-打开项目后，VS Code 会提示安装推荐插件 (定义在 `.vscode/extensions.json` 中)，建议全部安装：
-*   **C/C++** (Microsoft)
-*   **CMake Tools** (Microsoft)
+打开项目后，VS Code 会提示安装推荐插件 (定义在 `.vscode/extensions.json` 中)：
+*   **C/C++** (Microsoft) - 语法高亮、IntelliSense、调试器
+*   **CMake Tools** (Microsoft) - 构建、运行、调试入口
+*   **C/C++ DevTools** (Microsoft) - 增强 C++ 工具链与 AI/分析集成
 
 ### 3. 编译与运行
 本项目完全集成 VS Code 底部状态栏操作：
@@ -49,13 +50,18 @@ VSCmake/
 
 4.  **调试 (Debug)**：
     *   点击底部状态栏的 **🐞 Debug** (瓢虫图标)。
-    *   或者点击左侧活动栏的“运行与调试”，使用绿色箭头启动。
+    *   左侧“运行与调试”视图会自动显示监视/变量/调用堆栈。
 
 ## ⚠️ 关于中文乱码
 本项目已配置为**Windows MSVC 下无乱码模式**：
 *   源文件保存为 **UTF-8 (无 BOM)** 格式。
 *   `CMakeLists.txt` 中已配置 `/utf-8` 编译参数。
 *   如果遇到乱码，请检查右下角文件编码是否正确。
+
+## 🧩 调试与配置说明
+*   **不需要** `launch.json`/`tasks.json` 也能调试：CMake Tools 自带构建与调试入口。
+*   如果你习惯左侧的“运行与调试”绿色按钮，可以添加 `launch.json` 作为桥接配置。
+*   `.vscode/` 目录用于保存个人或团队的编辑器配置，已在项目中保留。
 
 ## 📝 开发指南
 *   **添加新文件**：直接在 `src/` 目录下创建新的 `.cpp` 或 `.h` 文件，CMake 会自动识别，无需修改配置。
