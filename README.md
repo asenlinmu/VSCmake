@@ -28,8 +28,9 @@ VSCmake/
 
 ### 2. VS Code 插件
 打开项目后，VS Code 会提示安装推荐插件 (定义在 `.vscode/extensions.json` 中)，建议全部安装：
-*   **C/C++** (Microsoft)
-*   **CMake Tools** (Microsoft)
+*   **C/C++** (Microsoft) - 语法高亮、IntelliSense、调试器
+*   **CMake Tools** (Microsoft) - 构建、运行、调试入口
+*   **C/C++ DevTools** (Microsoft) - 增强 C++ 工具链与 AI/分析集成
 
 ### 3. 编译与运行
 本项目完全集成 VS Code 底部状态栏操作：
@@ -49,13 +50,69 @@ VSCmake/
 
 4.  **调试 (Debug)**：
     *   点击底部状态栏的 **🐞 Debug** (瓢虫图标)。
-    *   或者点击左侧活动栏的“运行与调试”，使用绿色箭头启动。
+    *   或者使用左侧“运行与调试”中的 **调试 (CMake)** 配置。
 
 ## ⚠️ 关于中文乱码
 本项目已配置为**Windows MSVC 下无乱码模式**：
 *   源文件保存为 **UTF-8 (无 BOM)** 格式。
 *   `CMakeLists.txt` 中已配置 `/utf-8` 编译参数。
 *   如果遇到乱码，请检查右下角文件编码是否正确。
+
+## 🧩 调试与配置说明
+*   已提供 `.vscode/launch.json` 与 `.vscode/tasks.json`，左侧“运行与调试”可直接使用 **调试 (CMake)**。
+*   `launch.json` 通过 `${command:cmake.launchTargetPath}` 动态获取可执行文件路径。
+*   `tasks.json` 提供 `CMake: build` 任务，调试前自动构建。
+*   `.vscode/settings.json` 已启用以下配置：
+    *   `cmake.debugConfig.console = integratedTerminal` (调试使用集成终端，支持输入)
+    *   `cmake.debugConfig.justMyCode = true` (避免跳入系统库源码)
+    *   `cmake.environment.VSLANG = 1033` (构建输出使用英文，减少乱码)
+    *   `C_Cpp.errorSquiggles = enabled` (开启基础语法波浪线提示)
+
+### 参考配置片段
+
+**launch.json**
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "调试 (CMake)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "CMake: build"
+        }
+    ]
+}
+```
+
+**tasks.json**
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: build",
+            "type": "cmake",
+            "command": "build",
+            "targets": [
+                "all"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "CMake Build Task"
+        }
+    ]
+}
+```
 
 ## 📝 开发指南
 *   **添加新文件**：直接在 `src/` 目录下创建新的 `.cpp` 或 `.h` 文件，CMake 会自动识别，无需修改配置。
